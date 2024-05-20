@@ -21,7 +21,4 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
-    public void lalala(){
-        //TODO
-    }
 }
