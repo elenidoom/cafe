@@ -32,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     public void haha(){
 
     }
+
+    public void  f2(){
+        int x;
+
+
+    }
     public void ok(){
 
     }
