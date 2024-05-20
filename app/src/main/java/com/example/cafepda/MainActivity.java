@@ -28,4 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void  f(){
 
     }
+
+    public void haha(){
+
+    }
 }
