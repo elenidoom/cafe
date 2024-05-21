@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">cafePDA</string>
+    <string name="app_title">CafePDA</string>
+    <string name="start">Place your order!</string>
+    <string name="tables_title">TABLES</string>
+    <string name="table_1">TABLE 1</string>
+    <string name="table_2">TABLE 2</string>
+    <string name="table_3">TABLE 3</string>
+    <string name="table_4">TABLE 4</string>
+    <string name="table_5">TABLE 5</string>
+    <string name="table_6">TABLE 6</string>
+    <string name="empty_table">empty</string>
 </resources>
