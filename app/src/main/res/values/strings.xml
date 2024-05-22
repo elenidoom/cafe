@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">cafePDA</string>
     <string name="app_title">CafePDA</string>
-    <string name="start">Place your order!</string>
+    <string name="start">Start your shift!</string>
     <string name="tables_title">TABLES</string>
     <string name="table_1">TABLE 1</string>
     <string name="table_2">TABLE 2</string>
@@ -15,4 +15,6 @@
     <string name="add">+</string>
     <string name="quantity">0</string>
     <string name="subtract">-</string>
+    <string name="person_name">Your name</string>
+    <string name="code_name">Code Name</string>
 </resources>
