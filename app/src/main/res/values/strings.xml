@@ -10,4 +10,9 @@
     <string name="table_5">TABLE 5</string>
     <string name="table_6">TABLE 6</string>
     <string name="empty_table">empty</string>
+    <string name="item_title">Freddo Espresso</string>
+    <string name="price_tag">2.5€</string>
+    <string name="add">+</string>
+    <string name="quantity">0</string>
+    <string name="subtract">-</string>
 </resources>

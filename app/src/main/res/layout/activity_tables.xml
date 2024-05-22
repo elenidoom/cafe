@@ -26,10 +26,10 @@
         android:layout_height="64dp"
         android:layout_marginTop="28dp"
         android:text="@string/table_1"
-        android:textColorLink="#673AB7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_tables" />
+        app:layout_constraintTop_toBottomOf="@+id/title_tables"
+        android:onClick="MenuActivity"/>
 
     <Button
         android:id="@+id/btable2"
@@ -39,7 +39,8 @@
         android:text="@string/table_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable1" />
+        app:layout_constraintTop_toBottomOf="@+id/btable1"
+        android:onClick="MenuActivity"/>
 
     <Button
         android:id="@+id/btable3"
@@ -49,7 +50,8 @@
         android:text="@string/table_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable2" />
+        app:layout_constraintTop_toBottomOf="@+id/btable2"
+        android:onClick="MenuActivity"/>
 
     <Button
         android:id="@+id/btable4"
@@ -59,7 +61,8 @@
         android:text="@string/table_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable3" />
+        app:layout_constraintTop_toBottomOf="@+id/btable3"
+        android:onClick="MenuActivity"/>
 
     <Button
         android:id="@+id/btable5"
@@ -69,7 +72,8 @@
         android:text="@string/table_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable4" />
+        app:layout_constraintTop_toBottomOf="@+id/btable4"
+        android:onClick="MenuActivity"/>
 
     <Button
         android:id="@+id/btable6"
@@ -79,7 +83,8 @@
         android:text="@string/table_6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable5" />
+        app:layout_constraintTop_toBottomOf="@+id/btable5"
+        android:onClick="MenuActivity"/>
 
     <TextView
         android:id="@+id/textseated1"
