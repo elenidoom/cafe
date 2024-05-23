@@ -34,8 +34,14 @@ public class TablesActivity extends AppCompatActivity {
             //For debugging: print in the Logact (Debug level)
             Log.d("TablesActivity.java",userText.toString());
 
-            //Update the UI
-            objTextViewNameNewScreen.setText("Hello " + userText + ", your shift just started! Place your orders!");
+            if (userText.toString().equals("")){
+                objTextViewNameNewScreen.setText("Please enter you Code name before starting yout shift.");
+            }
+            else{
+                objTextViewNameNewScreen.setText("Hello " + userText + ", your shift just started! Place your orders!");
+
+            }
+
         }
 
     }

@@ -16,7 +16,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private final String[] titles = {"coffee", "tea", "water", "cola", "fanta",
             "beer", "wine", "potatoes"};
     private final String[] prices = {"2.5","2","0.5","2.2","2","3","4","4.5"};
-
+    //private final int[] images={R.drawable.item_coffee};
     @NonNull
     @Override
     public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -29,6 +29,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
         holder.ProductTitle.setText(titles[position]);
         holder.PriceText.setText(prices[position]);
+        //holder.ProductImage.setImageResource(images[position]);
     }
 
     @Override
