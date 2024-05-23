@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MainActivity extends AppCompatActivity {
     EditText objEditTextName;
 
@@ -40,8 +42,15 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, TablesActivity.class);
         CharSequence userText = objEditTextName.getText();
         i.putExtra("savedUserText", userText);
+        if (userText.toString().equals(""))
+        {
 
-        startActivity(i);
+            Snackbar.make(view, "Please enter you Code name before starting your shift.", Snackbar.LENGTH_LONG)
+                    .show();
+        }
+        else{
+            startActivity(i);
+        }
 
     }
 
