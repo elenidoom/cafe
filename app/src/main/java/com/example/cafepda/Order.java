@@ -7,6 +7,8 @@ public class Order {
     private float total;
     private ArrayList<Product> products;
 
+    public Order(){}
+
     public Order(String tableID, float total) {
         this.tableID = tableID;
         this.total = total;

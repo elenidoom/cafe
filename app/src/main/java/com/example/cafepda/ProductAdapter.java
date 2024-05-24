@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
 
+    /**
+     * Εδω κανονικά θα πρέπει τα δεδομένα να τα τραβάει απο τη βάση δεδομένων.
+     */
     private final String[] titles = {"coffee", "tea", "water", "cola", "fanta",
             "beer", "wine", "potatoes"};
     private final String[] prices = {"2.5","2","0.5","2.2","2","3","4","4.5"};
@@ -43,6 +46,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 holder.QuantityText.setText(String.valueOf(quantities[position]));
             }
         });
+        Product product = new Product(holder.ProductTitle.getText().toString(),Float.parseFloat(holder.PriceText.getText().toString()),Integer.parseInt(holder.QuantityText.getText().toString()));
+
     }
 
     @Override
@@ -58,7 +63,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Button ButtonPlus;
         Button ButtonMinus;
 
-        //Product product = new Product(ProductTitle.getText().toString(),Integer.parseInt(QuantityText.getText().toString()));
+        Button AddButton;
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ProductImage = itemView.findViewById(R.id.product_image);
@@ -67,6 +74,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             QuantityText = itemView.findViewById(R.id.quantity_text);
             ButtonPlus = itemView.findViewById(R.id.button_plus);
             ButtonMinus = itemView.findViewById(R.id.button_minus);
+            AddButton = itemView.findViewById(R.id.add_button);
         }
     }
 }

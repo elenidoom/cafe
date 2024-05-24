@@ -9,10 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class MenuActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<ProductAdapter.ViewHolder> adapter;
+    Order order = new Order();
 
 
     @Override
@@ -36,6 +39,8 @@ public class MenuActivity extends AppCompatActivity {
         Intent i = new Intent(this, TablesActivity.class);
 
         startActivity(i);
+        Snackbar.make(view, "The order has been sent successfully", Snackbar.LENGTH_LONG)
+                .show();
 
     }
 }
