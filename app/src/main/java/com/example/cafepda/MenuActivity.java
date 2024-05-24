@@ -1,12 +1,11 @@
 package com.example.cafepda;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +13,7 @@ public class MenuActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<ProductAdapter.ViewHolder> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,13 @@ public class MenuActivity extends AppCompatActivity {
 
         adapter = new ProductAdapter();
         recyclerView.setAdapter(adapter);
+
+    }
+
+    public void TablesActivity(View view){
+        Intent i = new Intent(this, TablesActivity.class);
+
+        startActivity(i);
 
     }
 }
