@@ -12,7 +12,7 @@
         android:id="@+id/title_tables"
         android:layout_width="85dp"
         android:layout_height="28dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="84dp"
         android:text="@string/tables_title"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,12 +67,12 @@
         android:id="@+id/btable5"
         android:layout_width="116dp"
         android:layout_height="64dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
+        android:onClick="MenuActivity"
         android:text="@string/table_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable4"
-        android:onClick="MenuActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/btable4" />
 
     <Button
         android:id="@+id/btable6"
@@ -153,6 +153,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="24dp"
         android:text="name"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/title_tables"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

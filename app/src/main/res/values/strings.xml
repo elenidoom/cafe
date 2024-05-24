@@ -17,4 +17,5 @@
     <string name="subtract">-</string>
     <string name="person_name">Your name</string>
     <string name="code_name">Code Name</string>
+    <string name="item_image_description">Item_image_description</string>
 </resources>
