@@ -47,7 +47,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 holder.QuantityText.setText(String.valueOf(quantities[position]));
             }
         });
-        Product product = new Product(holder.ProductTitle.getText().toString(),Float.parseFloat(holder.PriceText.getText().toString()),Integer.parseInt(holder.QuantityText.getText().toString()));
+
+        holder.AddButton.setOnClickListener(v -> {
+            Product product = new Product(holder.ProductTitle.getText().toString(),
+                    Float.parseFloat(holder.PriceText.getText().toString()),Integer.parseInt(holder.QuantityText.getText().toString()));
+
+        });
+
+
+
 
     }
 
