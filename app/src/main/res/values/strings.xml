@@ -18,4 +18,7 @@
     <string name="person_name">Your name</string>
     <string name="code_name">Code Name</string>
     <string name="item_image_description">Item_image_description</string>
+    <string name="Send_Order">Send Order</string>
+    <string name="ADD">ADD</string>
+    <string name="order_account">Order Account</string>
 </resources>

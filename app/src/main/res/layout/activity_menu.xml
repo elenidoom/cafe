@@ -10,21 +10,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="299dp" />
+        android:layout_height="676dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/sendOrderButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:onClick="sendOrder"
-            android:text="Send Order"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/sendOrderButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:onClick="sendOrder"
+        android:text="@string/Send_Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

@@ -117,7 +117,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:layout_marginBottom="39dp"
-            android:text="ADD"
+            android:text="@string/ADD"
+
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />

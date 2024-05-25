@@ -42,8 +42,8 @@ public class TablesActivity extends AppCompatActivity {
 
     public void MenuActivity(View view){
         Intent i = new Intent(this, MenuActivity.class);
-
         startActivity(i);
+
 
     }
 

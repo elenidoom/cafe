@@ -34,6 +34,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.ProductTitle.setText(titles[position]);
         holder.PriceText.setText(prices[position]);
         holder.ProductImage.setImageResource(images[position]);
+        int a=0;
 
         holder.ButtonPlus.setOnClickListener(v -> {
             quantities[position]++;

@@ -34,6 +34,11 @@ public class MenuActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+    public void sendOrder(View view){
+        Intent i = new Intent(this, OrderAccount.class);
+        startActivity(i);
+
+    }
 
     public void TablesActivity(View view){
         Intent i = new Intent(this, TablesActivity.class);
