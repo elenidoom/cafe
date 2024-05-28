@@ -29,12 +29,13 @@ public class TablesActivity extends AppCompatActivity {
 
         if (extras != null) {
             //Retrieve data passed in the Intent
-            CharSequence userText = extras.getCharSequence("savedUserText");
+            CharSequence userText = extras.getCharSequence("products");
+
 
             //For debugging: print in the Logact (Debug level)
-            Log.d("TablesActivity.java",userText.toString());
+            //Log.d("TablesActivity.java",userText.toString());
 
-            objTextViewNameNewScreen.setText("Hello " + userText + ", your shift just started! Place your orders!");
+            objTextViewNameNewScreen.setText(userText);
 
         }
 

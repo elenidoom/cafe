@@ -11,16 +11,37 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
+
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
 
     /**
      * Εδω κανονικά θα πρέπει τα δεδομένα να τα τραβάει απο τη βάση δεδομένων.
      */
+
+
+    private ArrayList<Product> productsList;
+    private OnAddButtonClickListener listener;
+
+    public interface OnAddButtonClickListener {
+        void onAddButtonClicked(Product product);
+    }
+
+    public ProductAdapter(ArrayList<Product> productsList, OnAddButtonClickListener listener) {
+        this.productsList = productsList;
+        this.listener = listener;
+    }
+
     private final String[] titles = {"coffee", "tea", "water", "cola", "fanta",
             "beer", "wine", "potatoes"};
     private final String[] prices = {"2.5","2","0.5","2.2","2","3","4","4.5"};
     private final int[] quantities = new int[titles.length];
     private final int[] images={R.drawable.rofimata1,R.drawable.rofimata2,R.drawable.rofimata3,R.drawable.rofimata4,R.drawable.rofimata5,R.drawable.rofimata6,R.drawable.rofimata7,R.drawable.rofimata8 };
+
+
+
     @NonNull
     @Override
     public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,11 +52,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+
+
+        Product product = new Product(titles[position],Float.parseFloat(prices[position]),quantities[position]);
+        holder.bind(product, listener);
+
         holder.ProductTitle.setText(titles[position]);
         holder.PriceText.setText(prices[position]);
         holder.ProductImage.setImageResource(images[position]);
-        int a=0;
-
         holder.ButtonPlus.setOnClickListener(v -> {
             quantities[position]++;
             holder.QuantityText.setText(String.valueOf(quantities[position]));
@@ -46,18 +70,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 quantities[position]--;
                 holder.QuantityText.setText(String.valueOf(quantities[position]));
             }
-        });
-
-        holder.AddButton.setOnClickListener(v -> {
-            Product product = new Product(holder.ProductTitle.getText().toString(),
-                    Float.parseFloat(holder.PriceText.getText().toString()),Integer.parseInt(holder.QuantityText.getText().toString()));
-
-        });
-
-
+            });
 
 
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -85,5 +103,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             ButtonMinus = itemView.findViewById(R.id.button_minus);
             AddButton = itemView.findViewById(R.id.add_button);
         }
+
+
+        public void bind(Product product,OnAddButtonClickListener listener) {
+            AddButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onAddButtonClicked(product);
+                }
+            });
+        }
     }
+
 }
