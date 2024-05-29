@@ -14,17 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MenuActivity extends AppCompatActivity implements ProductAdapter.OnAddButtonClickListener{
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<ProductAdapter.ViewHolder> adapter;
-    ArrayList<Product> products;
-
-
-
+    HashMap<Product,Integer> products;
     TextView finalOrder;
     Order order ;
+    double total = 0.0;
 
 
     @Override
@@ -32,7 +31,7 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
-        products = new ArrayList<>();
+        products = new HashMap<>();
         order = new Order();
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -50,12 +49,24 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
 
     }
     @Override
-    public void onAddButtonClicked(Product product) {
-        order.addProduct(product);
+    public void onAddButtonClicked(Product product, int quantity) {
+
+        products.put(product,quantity);
         Toast.makeText(this, product.getName() + " added to order", Toast.LENGTH_SHORT).show();
 
+        StringBuilder orderList = new StringBuilder();
 
-        finalOrder.setText(order.toString());
+        for (Product p : products.keySet()) {
+            int q = products.get(p);
+            if (q!=0){
+                orderList.append(products.get(p)).append(" x ").append(p.getName()).append("\n");
+                total+=p.getPrice()*q;
+            }
+        }
+        orderList.append("\n").append("Total: ").append(total).append(" €");
+
+
+        finalOrder.setText(orderList);
 
     }
 
@@ -72,6 +83,5 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         startActivity(i);
         Snackbar.make(view, "The order has been sent successfully", Snackbar.LENGTH_LONG)
                 .show();
-
     }
 }

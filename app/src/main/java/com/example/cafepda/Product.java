@@ -1,15 +1,16 @@
 package com.example.cafepda;
 
+import androidx.annotation.NonNull;
+
 public class Product {
     private String name;
 
-    private float price;
-    private int quantity;
+    private double price;
 
-    public Product(String name, float price, int quantity) {
+
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
     }
 
     public String getName() {
@@ -17,10 +18,14 @@ public class Product {
     }
 
     public float getPrice() {
-        return price;
+        return (float) price;
     }
 
-    public int getQuantity() {
-        return quantity;
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "x"+name;
     }
 }

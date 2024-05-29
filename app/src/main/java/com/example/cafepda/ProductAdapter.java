@@ -8,12 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
 
@@ -22,14 +19,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
      */
 
 
-    private ArrayList<Product> productsList;
-    private OnAddButtonClickListener listener;
+    private HashMap<Product, Integer> productsList;
+    private final OnAddButtonClickListener listener;
 
     public interface OnAddButtonClickListener {
-        void onAddButtonClicked(Product product);
+        void onAddButtonClicked(Product product, int quantity);
     }
 
-    public ProductAdapter(ArrayList<Product> productsList, OnAddButtonClickListener listener) {
+    public ProductAdapter(HashMap<Product, Integer> productsList, OnAddButtonClickListener listener) {
         this.productsList = productsList;
         this.listener = listener;
     }
@@ -52,30 +49,37 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+        Product product = new Product(titles[position],Double.parseDouble(prices[position]));
 
-
-        Product product = new Product(titles[position],Float.parseFloat(prices[position]),quantities[position]);
-        holder.bind(product, listener);
+        if(!productsList.containsKey(product)) {
+            productsList.put(product,0);
+        }
 
         holder.ProductTitle.setText(titles[position]);
         holder.PriceText.setText(prices[position]);
         holder.ProductImage.setImageResource(images[position]);
-        holder.ButtonPlus.setOnClickListener(v -> {
-            quantities[position]++;
-            holder.QuantityText.setText(String.valueOf(quantities[position]));
-        });
+        holder.QuantityText.setText(String.valueOf(productsList.get(product)));
 
+        holder.ButtonPlus.setOnClickListener(v -> {
+            int newQuantity = productsList.get(product)+1;
+            productsList.put(product,newQuantity);
+            holder.QuantityText.setText(String.valueOf(newQuantity));
+
+        });
         holder.ButtonMinus.setOnClickListener(v -> {
-            if (quantities[position] > 0) {
-                quantities[position]--;
-                holder.QuantityText.setText(String.valueOf(quantities[position]));
+            int currentQuantity = productsList.get(product);
+            if (currentQuantity > 0) {
+                int newQuantity = currentQuantity - 1;
+                holder.QuantityText.setText(String.valueOf(newQuantity));
             }
-            });
+        });
+        holder.AddButton.setOnClickListener(v -> {
+             listener.onAddButtonClicked(product, productsList.get(product));
+             holder.QuantityText.setText("0");
+        });
 
 
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -105,14 +109,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
 
-        public void bind(Product product,OnAddButtonClickListener listener) {
-            AddButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onAddButtonClicked(product);
-                }
+        public void bind(Product product,int quantity, OnAddButtonClickListener listener) {
+//            ButtonPlus.setOnClickListener(v -> {
+//                quantity++;
+//                QuantityText.setText(String.valueOf(quantity));
+//            });
+//            ButtonMinus.setOnClickListener(v -> {
+//                if (quantity > 0) {
+//                    quantity--;
+//                    QuantityText.setText(String.valueOf(quantity));
+//                }
+//            });
+            AddButton.setOnClickListener(v -> {
+                listener.onAddButtonClicked(product,quantity);
             });
         }
     }
 
 }
+
+

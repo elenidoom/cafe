@@ -6,6 +6,7 @@ public class Order {
 
     private double total;
     private ArrayList<Product> products;
+    private String tableID;
 
 
 
@@ -15,9 +16,13 @@ public class Order {
         products = new ArrayList<>();
     }
 
+    public String getTableID() {
+        return tableID;
+    }
 
-
-
+    public void setTableID(String tableID) {
+        this.tableID = tableID;
+    }
 
     public double getTotal() {
         for(Product product : products){
@@ -40,5 +45,13 @@ public class Order {
 
     public void addProduct(Product product) {
         products.add(product);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "total=" + getTotal() +
+                ", products=" + products +
+                '}';
     }
 }
