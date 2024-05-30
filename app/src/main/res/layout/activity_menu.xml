@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MenuActivity">
 
+    <TextView
+        android:id="@+id/tableNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -20,7 +26,7 @@
             android:id="@+id/sendOrderButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:onClick="sendOrder"
+            android:onClick="TablesActivity"
             android:text="@string/Send_Order"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

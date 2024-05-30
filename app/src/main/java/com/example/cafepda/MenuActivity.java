@@ -22,8 +22,10 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
     RecyclerView.Adapter<ProductAdapter.ViewHolder> adapter;
     HashMap<Product,Integer> products;
     TextView finalOrder;
+    TextView tableOrder;
     Order order ;
     double total = 0.0;
+    int tableNumber;
 
 
     @Override
@@ -31,8 +33,14 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
+        tableOrder = findViewById(R.id.tableNameTextView);
         products = new HashMap<>();
-        order = new Order();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras!=null){
+            tableNumber = (int) extras.get("tableID");
+            tableOrder.setText("Table " + tableNumber);
+        }
 
         recyclerView = findViewById(R.id.recycler_view);
         finalOrder = findViewById(R.id.orderText);
@@ -64,24 +72,16 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
             }
         }
         orderList.append("\n").append("Total: ").append(total).append(" €");
-
-
         finalOrder.setText(orderList);
-
-    }
-
-    public void sendOrder(View view){
-        Intent i = new Intent(this, OrderAccount.class);
-        startActivity(i);
-
     }
 
     public void TablesActivity(View view){
-        Intent i = new Intent(this, TablesActivity.class);
-        i.putExtra("products",products);
+        Intent returnData = new Intent();
+        order = new Order(tableNumber,products,total);
+        returnData.putExtra("order",order);
+        setResult(RESULT_OK,returnData);
 
-        startActivity(i);
-        Snackbar.make(view, "The order has been sent successfully", Snackbar.LENGTH_LONG)
-                .show();
+        finish();
+
     }
 }

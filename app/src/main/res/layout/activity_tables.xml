@@ -24,11 +24,11 @@
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="28dp"
+        android:onClick="MenuActivity"
         android:text="@string/table_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_tables"
-        android:onClick="MenuActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/title_tables" />
 
     <Button
         android:id="@+id/btable2"

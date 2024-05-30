@@ -1,57 +1,33 @@
 package com.example.cafepda;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class Order {
+public class Order implements Serializable {
 
     private double total;
-    private ArrayList<Product> products;
-    private String tableID;
+    private HashMap<Product,Integer> products;
+    private int tableID;
 
 
 
-    public Order() {
-
-        total = 0.0;
-        products = new ArrayList<>();
-    }
-
-    public String getTableID() {
-        return tableID;
-    }
-
-    public void setTableID(String tableID) {
+    public Order(int tableID, HashMap<Product,Integer> products,double total) {
+        this.products = products;
         this.tableID = tableID;
+        this.total = total;
+
     }
 
     public double getTotal() {
-        for(Product product : products){
-            total += product.getPrice();
-        }
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public ArrayList<Product> getProducts() {
+    public HashMap<Product, Integer> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
-    }
-
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "total=" + getTotal() +
-                ", products=" + products +
-                '}';
+    public int getTableID() {
+        return tableID;
     }
 }
