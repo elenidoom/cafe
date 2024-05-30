@@ -14,12 +14,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class TablesActivity extends AppCompatActivity {
 
     TextView objTextViewNameNewScreen;
-
     TextView table1Status;
     TextView table2Status;
     TextView table3Status;
@@ -27,9 +29,7 @@ public class TablesActivity extends AppCompatActivity {
     TextView table5Status;
     TextView table6Status;
 
-
-
-
+    ArrayList<Order> openOrders = new ArrayList<>();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class TablesActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 5 && resultCode == RESULT_OK) {
             Order o = (Order) Objects.requireNonNull(data.getExtras()).get("order");
+            openOrders.add(o);
             int id = o.getTableID();
             if(id==1){
                 table1Status.setText("occupied");
@@ -100,6 +101,7 @@ public class TablesActivity extends AppCompatActivity {
             } else if (id==6) {
                 table6Status.setText("occupied");
             }
+
         }
     }
 

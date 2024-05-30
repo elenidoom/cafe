@@ -35,11 +35,13 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         setContentView(R.layout.activity_menu);
         tableOrder = findViewById(R.id.tableNameTextView);
         products = new HashMap<>();
+        order = new Order();
 
         Bundle extras = getIntent().getExtras();
         if (extras!=null){
             tableNumber = (int) extras.get("tableID");
             tableOrder.setText("Table " + tableNumber);
+            order.setTableID(tableNumber);
         }
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -52,35 +54,32 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         adapter = new ProductAdapter(products,this);
         recyclerView.setAdapter(adapter);
 
-        finalOrder.setText(";)");
+        finalOrder.setText("");
 
 
     }
     @Override
     public void onAddButtonClicked(Product product, int quantity) {
-
-        products.put(product,quantity);
-        Toast.makeText(this, product.getName() + " added to order", Toast.LENGTH_SHORT).show();
+        order.addProduct(product,quantity);
+        Toast.makeText(this, quantity+" x "+product.getName() + " added to order", Toast.LENGTH_SHORT).show();
 
         StringBuilder orderList = new StringBuilder();
 
-        for (Product p : products.keySet()) {
-            int q = products.get(p);
+        for (Product p : order.getProducts().keySet()) {
+            int q = order.getProducts().get(p);
             if (q!=0){
-                orderList.append(products.get(p)).append(" x ").append(p.getName()).append("\n");
-                total+=p.getPrice()*q;
+                orderList.append(q).append(" x ").append(p.getName()).append("\n");
+
             }
         }
-        orderList.append("\n").append("Total: ").append(total).append(" €");
+        orderList.append("\n").append("Total: ").append(order.getTotal()).append(" €");
         finalOrder.setText(orderList);
     }
 
     public void TablesActivity(View view){
         Intent returnData = new Intent();
-        order = new Order(tableNumber,products,total);
         returnData.putExtra("order",order);
         setResult(RESULT_OK,returnData);
-
         finish();
 
     }

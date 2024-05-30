@@ -34,7 +34,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private final String[] titles = {"coffee", "tea", "water", "cola", "fanta",
             "beer", "wine", "potatoes"};
     private final String[] prices = {"2.5","2","0.5","2.2","2","3","4","4.5"};
-    private final int[] quantities = new int[titles.length];
+
     private final int[] images={R.drawable.rofimata1,R.drawable.rofimata2,R.drawable.rofimata3,R.drawable.rofimata4,R.drawable.rofimata5,R.drawable.rofimata6,R.drawable.rofimata7,R.drawable.rofimata8 };
 
 
@@ -61,20 +61,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.QuantityText.setText(String.valueOf(productsList.get(product)));
 
         holder.ButtonPlus.setOnClickListener(v -> {
-            int newQuantity = productsList.get(product)+1;
-            productsList.put(product,newQuantity);
-            holder.QuantityText.setText(String.valueOf(newQuantity));
+            int currentQuantity = Integer.parseInt(holder.QuantityText.getText().toString());
+            holder.QuantityText.setText(String.valueOf(currentQuantity+1));
 
         });
         holder.ButtonMinus.setOnClickListener(v -> {
-            int currentQuantity = productsList.get(product);
+            int currentQuantity = Integer.parseInt(holder.QuantityText.getText().toString());
             if (currentQuantity > 0) {
-                int newQuantity = currentQuantity - 1;
-                holder.QuantityText.setText(String.valueOf(newQuantity));
+                holder.QuantityText.setText(String.valueOf(currentQuantity-1));
             }
+
         });
         holder.AddButton.setOnClickListener(v -> {
-             listener.onAddButtonClicked(product, productsList.get(product));
+             int quantity = Integer.parseInt(holder.QuantityText.getText().toString());
+
+             listener.onAddButtonClicked(product, quantity);
              holder.QuantityText.setText("0");
         });
 
@@ -108,24 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             AddButton = itemView.findViewById(R.id.add_button);
         }
 
-
-        public void bind(Product product,int quantity, OnAddButtonClickListener listener) {
-//            ButtonPlus.setOnClickListener(v -> {
-//                quantity++;
-//                QuantityText.setText(String.valueOf(quantity));
-//            });
-//            ButtonMinus.setOnClickListener(v -> {
-//                if (quantity > 0) {
-//                    quantity--;
-//                    QuantityText.setText(String.valueOf(quantity));
-//                }
-//            });
-            AddButton.setOnClickListener(v -> {
-                listener.onAddButtonClicked(product,quantity);
-            });
-        }
     }
-
 }
 
 
