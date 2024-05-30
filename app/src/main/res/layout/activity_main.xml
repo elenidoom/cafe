@@ -32,18 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textmaintitle" />
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="264dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="68dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/code_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textmaintitle" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="309dp"
@@ -56,6 +44,18 @@
         app:layout_constraintTop_toBottomOf="@+id/border"
         app:srcCompat="@drawable/rofimata" />
 
+    <EditText
+        android:id="@+id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="104dp"
+        android:ems="10"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textmaintitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

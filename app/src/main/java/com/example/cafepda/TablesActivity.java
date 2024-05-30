@@ -48,7 +48,7 @@ public class TablesActivity extends AppCompatActivity {
 
         if (extras != null) {
             //Retrieve data passed in the Intent
-            CharSequence userText = extras.getCharSequence("products");
+            CharSequence userText = extras.getCharSequence("savedUserText");
 
 
             //For debugging: print in the Logact (Debug level)
