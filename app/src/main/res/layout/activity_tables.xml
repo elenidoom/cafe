@@ -67,7 +67,7 @@
         android:id="@+id/btable5"
         android:layout_width="116dp"
         android:layout_height="64dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:onClick="MenuActivity"
         android:text="@string/table_5"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,8 +84,10 @@
         android:text="@string/table_6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable5" />
+        app:layout_constraintTop_toBottomOf="@+id/btable5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textseated1"
@@ -173,5 +175,14 @@
         app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="127dp"
+        android:layout_height="24dp"
+        android:text="Total Income:"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="826dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

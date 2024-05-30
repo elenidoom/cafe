@@ -61,23 +61,36 @@ public class TablesActivity extends AppCompatActivity {
     }
 
     public void MenuActivity(View view){
-        Intent intent = new Intent(this, MenuActivity.class);
+
         int id = view.getId();
-        if (id == R.id.btable1) {
-            intent.putExtra("tableID", 1);
+        if (    (id == R.id.btable1 && table1Status.getText().equals("occupied")) ||
+                (id == R.id.btable2 && table2Status.getText().equals("occupied")) ||
+                (id == R.id.btable3 && table3Status.getText().equals("occupied")) ||
+                (id == R.id.btable4 && table4Status.getText().equals("occupied")) ||
+                (id == R.id.btable5 && table5Status.getText().equals("occupied")) ||
+                (id == R.id.btable6 && table6Status.getText().equals("occupied"))  ){
+            Snackbar.make(view, "Table is occupied", Snackbar.LENGTH_LONG).show();
+
         }
-        else if (id == R.id.btable2) {
-            intent.putExtra("tableID", 2);
-        } else if (id == R.id.btable3) {
-            intent.putExtra("tableID", 3);
-        } else if (id == R.id.btable4) {
-            intent.putExtra("tableID", 4);
-        } else if (id == R.id.btable5) {
-            intent.putExtra("tableID", 5);
-        } else if (id == R.id.btable6) {
-            intent.putExtra("tableID", 6);
+        else{
+            Intent intent = new Intent(this, MenuActivity.class);
+            if (id == R.id.btable1) {
+                intent.putExtra("tableID", 1);
+            }
+            else if (id == R.id.btable2) {
+                intent.putExtra("tableID", 2);
+            } else if (id == R.id.btable3) {
+                intent.putExtra("tableID", 3);
+            } else if (id == R.id.btable4) {
+                intent.putExtra("tableID", 4);
+            } else if (id == R.id.btable5) {
+                intent.putExtra("tableID", 5);
+            } else if (id == R.id.btable6) {
+                intent.putExtra("tableID", 6);
+            }
+            startActivityForResult(intent,5);
         }
-        startActivityForResult(intent,5);
+
 
     }
     @Override
