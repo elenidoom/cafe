@@ -15,10 +15,14 @@
     <string name="add">+</string>
     <string name="quantity">0</string>
     <string name="subtract">-</string>
-    <string name="person_name">Your name</string>
+    <string name="person_name">Your name:</string>
+    <string name="name">Name</string>
     <string name="code_name">Code Name</string>
     <string name="item_image_description">Item_image_description</string>
     <string name="Send_Order">Send Order</string>
     <string name="ADD">ADD</string>
     <string name="order_account">Order Account</string>
+    <string name="Dont_have_account">Do not have an account?</string>
+    <string name="sign_in">Sign in!</string>
+    <string name="password">Password:</string>
 </resources>

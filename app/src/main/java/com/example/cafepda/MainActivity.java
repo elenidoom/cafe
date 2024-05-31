@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         objEditTextPassword = findViewById(R.id.passwordLabel);
         db = new DbHandler(this,null,null,1);
         //Ετσι μονο μπορεσα να βαλω δεν ξερω πως αλλιως το βλεπουμε
-//        String name = "admin1";
-//        int password = 1234;
-//        db.addWaiter(name,password);
+        String name = "admin1";
+        int password = 1234;
+        db.addWaiter(name,password);
 
 
         if (savedInstanceState != null){
@@ -43,18 +43,24 @@ public class MainActivity extends AppCompatActivity {
             objEditTextPassword.setHint("Code Name");
     }}
 
+    public void SignIn(View view){
+        Intent i = new Intent(this, SignIn.class);
+        startActivity(i);
+
+    }
+
     public void TablesActivity(View view){
         Intent i = new Intent(this, TablesActivity.class);
         String userText = String.valueOf(objEditTextPassword.getText());
         String username = db.findWaiter(Integer.parseInt(userText));
 
-        if (userText.isEmpty())
+        if (username=="")
         {
-
             Snackbar.make(view, "Please enter you Code name before starting your shift.", Snackbar.LENGTH_LONG)
                     .show();
-        } else if (username == "not found") {
-            Snackbar.make(view, "waiter not found", Snackbar.LENGTH_LONG)
+        }
+        else if (username == "not found") {
+            Snackbar.make(view, "Waiter not found.", Snackbar.LENGTH_LONG)
                     .show();
         } else{
             i.putExtra("savedUserText", username);
