@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
     EditText objEditTextPassword;
     DbHandler db;
@@ -52,19 +54,22 @@ public class MainActivity extends AppCompatActivity {
     public void TablesActivity(View view){
         Intent i = new Intent(this, TablesActivity.class);
         String userText = String.valueOf(objEditTextPassword.getText());
-        String username = db.findWaiter(Integer.parseInt(userText));
 
-        if (username=="")
+
+        if (userText.isEmpty())
         {
             Snackbar.make(view, "Please enter you Code name before starting your shift.", Snackbar.LENGTH_LONG)
                     .show();
         }
-        else if (username == "not found") {
-            Snackbar.make(view, "Waiter not found.", Snackbar.LENGTH_LONG)
-                    .show();
-        } else{
-            i.putExtra("savedUserText", username);
-            startActivity(i);
+        else{
+            String username = db.findWaiter(Integer.parseInt(userText));
+            if (Objects.equals(username, "not found")) {
+                Snackbar.make(view, "Waiter not found.", Snackbar.LENGTH_LONG)
+                        .show();
+            } else{
+                i.putExtra("savedUserText", username);
+                startActivity(i);
+            }
         }
 
     }
