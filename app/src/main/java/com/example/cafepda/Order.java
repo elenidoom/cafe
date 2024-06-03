@@ -1,5 +1,7 @@
 package com.example.cafepda;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,5 +54,16 @@ public class Order implements Serializable {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Product p : products.keySet()) {
+            sb.append(products.get(p)).append(" x ").append(p.getName()).append("\n");
+        }
+        sb.append("Total: ").append(total).append("€");
+        return sb.toString();
     }
 }

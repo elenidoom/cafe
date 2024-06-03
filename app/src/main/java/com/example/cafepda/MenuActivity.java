@@ -11,9 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MenuActivity extends AppCompatActivity implements ProductAdapter.OnAddButtonClickListener{
@@ -55,9 +52,8 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         recyclerView.setAdapter(adapter);
 
         finalOrder.setText("");
-
-
     }
+
     @Override
     public void onAddButtonClicked(Product product, int quantity) {
         order.addProduct(product,quantity);
@@ -83,4 +79,6 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         finish();
 
     }
+
+
 }

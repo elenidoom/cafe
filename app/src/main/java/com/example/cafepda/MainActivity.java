@@ -83,11 +83,5 @@ public class MainActivity extends AppCompatActivity {
         outState.putCharSequence("savedUserText", userText);
 
 
-}
-
-
-
-
-
-
+    }
 }

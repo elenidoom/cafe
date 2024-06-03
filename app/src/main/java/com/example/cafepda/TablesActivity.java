@@ -118,4 +118,10 @@ public class TablesActivity extends AppCompatActivity {
         }
     }
 
+    public void openOrdersActivity(){
+        Intent intent = new Intent(this, OpenOrdersActivity.class);
+        intent.putExtra("openOrdersList",openOrders);
+        startActivity(intent);
+    }
+
 }
