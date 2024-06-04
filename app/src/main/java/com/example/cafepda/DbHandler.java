@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * Η κλάση αυτή διαχειρείζεται τη βάση δεδομένων της εφαρμογής.
+ */
 public class DbHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "waiters.db";
@@ -34,6 +37,11 @@ public class DbHandler extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * Ποσθήκη ενός σερβιτόρου στη βάσηη δεδομένων
+     * @param name το όνομα του σερβιτόρου
+     * @param password ο κωδικός του ερβιτόρου που θα χρησιμοποιηθεί για να συνδεθεί.
+     */
     public void addWaiter(String name ,int password){
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name);
@@ -43,6 +51,10 @@ public class DbHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Εύρεη σερβιτόρου στη βάση μέσω του κωδικού του
+     * @return το όνομα του εκάστοτε σερβιτόρου
+     */
     public String findWaiter(int password){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_WAITERS + " WHERE " + PASSWORD + " = " + password;

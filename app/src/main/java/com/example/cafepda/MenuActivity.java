@@ -21,7 +21,7 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
     TextView finalOrder;
     TextView tableOrder;
     Order order ;
-    double total = 0.0;
+
     int tableNumber;
 
 

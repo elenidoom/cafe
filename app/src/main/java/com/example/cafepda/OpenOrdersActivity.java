@@ -24,12 +24,16 @@ public class OpenOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_open_orders);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            orders = (ArrayList<Order>) getIntent().getSerializableExtra("openOrdersList");
+        }
+
+
         recyclerView = findViewById(R.id.openOrdersRecycleView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new OpenOrdersAdapter(orders);
         recyclerView.setAdapter(adapter);
-
-
     }
 }

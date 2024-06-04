@@ -118,10 +118,16 @@ public class TablesActivity extends AppCompatActivity {
         }
     }
 
-    public void openOrdersActivity(){
-        Intent intent = new Intent(this, OpenOrdersActivity.class);
-        intent.putExtra("openOrdersList",openOrders);
-        startActivity(intent);
+    public void openOrdersActivity(View view){
+        if (openOrders.isEmpty()){
+            Snackbar.make(view,  "no open orders yet.", Snackbar.LENGTH_LONG).show();
+        }else{
+            Intent intent = new Intent(this, OpenOrdersActivity.class);
+            intent.putExtra("openOrders", openOrders);
+            startActivity(intent);
+        }
+
+
     }
 
 }

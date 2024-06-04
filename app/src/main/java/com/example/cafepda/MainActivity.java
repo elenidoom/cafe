@@ -25,11 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         objEditTextPassword = findViewById(R.id.passwordLabel);
         db = new DbHandler(this,null,null,1);
-        //Ετσι μονο μπορεσα να βαλω δεν ξερω πως αλλιως το βλεπουμε
-        //String name = "admin1";
-        //int password = 1234;
-        //db.addWaiter(name,password);
-
 
         if (savedInstanceState != null){
             //Retrieve data from the Bundle (other methods include getInt(), getBoolean() etc)

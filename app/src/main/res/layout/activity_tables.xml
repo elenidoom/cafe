@@ -164,14 +164,14 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/openOrdersButton"
         android:layout_width="105dp"
         android:layout_height="59dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="18dp"
         android:text="Open Orders"
-        android:onClick="OrderAccount"
+        android:onClick="openOrdersActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
