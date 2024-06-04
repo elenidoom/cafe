@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             //Initialize the UI
             objEditTextPassword.setText("");
-            objEditTextPassword.setHint("Code Name");
+            objEditTextPassword.setHint("PIN");
     }}
 
     public void SignIn(View view){

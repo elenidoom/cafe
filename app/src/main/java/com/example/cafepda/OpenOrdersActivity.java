@@ -1,5 +1,6 @@
 package com.example.cafepda;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class OpenOrdersActivity extends AppCompatActivity {
+public class OpenOrdersActivity extends AppCompatActivity implements OpenOrdersAdapter.OnAddButtonClickListener {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -33,7 +34,15 @@ public class OpenOrdersActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.openOrdersRecycleView);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new OpenOrdersAdapter(orders);
+        adapter = new OpenOrdersAdapter(orders,this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onAddButtonClicked(Order order) {
+        Intent intent = new Intent();
+        intent.putExtra("orderToBeClosed",order);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 }

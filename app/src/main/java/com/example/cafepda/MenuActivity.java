@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
     HashMap<Product,Integer> products;
     TextView finalOrder;
     TextView tableOrder;
-    Order order ;
+    Order order= new Order() ;
 
     int tableNumber;
 
@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
         setContentView(R.layout.activity_menu);
         tableOrder = findViewById(R.id.tableNameTextView);
         products = new HashMap<>();
-        order = new Order();
+
 
         Bundle extras = getIntent().getExtras();
         if (extras!=null){
@@ -56,6 +56,7 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
 
     @Override
     public void onAddButtonClicked(Product product, int quantity) {
+
         order.addProduct(product,quantity);
         Toast.makeText(this, quantity+" x "+product.getName() + " added to order", Toast.LENGTH_SHORT).show();
 
@@ -73,6 +74,10 @@ public class MenuActivity extends AppCompatActivity implements ProductAdapter.On
     }
 
     public void TablesActivity(View view){
+        if (order.getProducts().size()==0){
+            Toast.makeText(this, "Please add items to order", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent returnData = new Intent();
         returnData.putExtra("order",order);
         setResult(RESULT_OK,returnData);

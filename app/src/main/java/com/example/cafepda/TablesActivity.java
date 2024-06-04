@@ -28,8 +28,10 @@ public class TablesActivity extends AppCompatActivity {
     TextView table4Status;
     TextView table5Status;
     TextView table6Status;
+    TextView totalIncome;
 
-    ArrayList<Order> openOrders = new ArrayList<>();;
+    ArrayList<Order> openOrders = new ArrayList<>();
+    double total = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class TablesActivity extends AppCompatActivity {
         table4Status = (TextView) findViewById(R.id.textseated4);
         table5Status = (TextView) findViewById(R.id.textseated5);
         table6Status = (TextView) findViewById(R.id.textseated6);
+        totalIncome = (TextView) findViewById(R.id.totalTextView);
 
         objTextViewNameNewScreen = (TextView) findViewById(R.id.textViewName);
         Bundle extras = getIntent().getExtras();
@@ -49,13 +52,7 @@ public class TablesActivity extends AppCompatActivity {
         if (extras != null) {
             //Retrieve data passed in the Intent
             CharSequence userText = extras.getCharSequence("savedUserText");
-
-
-            //For debugging: print in the Logact (Debug level)
-            //Log.d("TablesActivity.java",userText.toString());
-
             objTextViewNameNewScreen.setText(userText);
-
         }
 
     }
@@ -97,26 +94,55 @@ public class TablesActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 5 && resultCode == RESULT_OK) {
-            Order o = (Order) Objects.requireNonNull(data.getExtras()).get("order");
-            openOrders.add(o);
-            int id = o.getTableID();
-            if(id==1){
-                table1Status.setText("occupied");
-            } else if (id==2) {
-                table2Status.setText("occupied");
-            } else if (id==3) {
-                table3Status.setText("occupied");
-            } else if (id==4) {
-                table4Status.setText("occupied");
-            } else if (id==5) {
-                table5Status.setText("occupied");
-            } else if (id==6) {
-                table6Status.setText("occupied");
-            }
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 5) {
+                Order o = (Order) Objects.requireNonNull(data.getExtras()).get("order");
+                openOrders.add(o);
+                int id = o.getTableID();
+                if (id == 1) {
+                    table1Status.setText("occupied");
+                } else if (id == 2) {
+                    table2Status.setText("occupied");
+                } else if (id == 3) {
+                    table3Status.setText("occupied");
+                } else if (id == 4) {
+                    table4Status.setText("occupied");
+                } else if (id == 5) {
+                    table5Status.setText("occupied");
+                } else if (id == 6) {
+                    table6Status.setText("occupied");
+                }
 
+            } else if (requestCode == 6) {
+                Order orderToBeClosed = (Order) Objects.requireNonNull(data.getExtras()).get("orderToBeClosed");
+                assert orderToBeClosed != null;
+                total += orderToBeClosed.getTotal();
+                totalIncome.setText(total+" €");
+                for (int i = 0; i < openOrders.size(); i++) {
+                    if (openOrders.get(i).getTableID() == orderToBeClosed.getTableID()) {
+                        openOrders.remove(i);
+                        break;
+                    }
+                }
+                int id = orderToBeClosed.getTableID();
+                if (id == 1) {
+                    table1Status.setText("empty");
+                } else if (id == 2) {
+                    table2Status.setText("empty");
+                } else if (id == 3) {
+                    table3Status.setText("empty");
+                } else if (id == 4) {
+                    table4Status.setText("empty");
+                } else if (id == 5) {
+                    table5Status.setText("empty");
+                } else if (id == 6) {
+                    table6Status.setText("empty");
+                }
+            }
         }
     }
+
+
 
     public void openOrdersActivity(View view){
         if (openOrders.isEmpty()){
@@ -124,9 +150,8 @@ public class TablesActivity extends AppCompatActivity {
         }else{
             Intent intent = new Intent(this, OpenOrdersActivity.class);
             intent.putExtra("openOrders", openOrders);
-            startActivity(intent);
+            startActivityForResult(intent,6);
         }
-
 
     }
 
