@@ -43,7 +43,7 @@ public class OpenOrdersAdapter extends RecyclerView.Adapter<OpenOrdersAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             payButton = itemView.findViewById(R.id.payButton);
-            orderTextView = itemView.findViewById(R.id.showOrdertextView);
+            orderTextView = itemView.findViewById(R.id.showOrderTextView);
         }
     }
 }

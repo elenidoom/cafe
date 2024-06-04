@@ -60,10 +60,11 @@ public class Order implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Table ").append(tableID).append("\n");
         for (Product p : products.keySet()) {
             sb.append(products.get(p)).append(" x ").append(p.getName()).append("\n");
         }
         sb.append("Total: ").append(total).append("€");
-        return sb.toString();
+        return String.valueOf(sb);
     }
 }

@@ -26,7 +26,7 @@ public class OpenOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_open_orders);
         Bundle extras = getIntent().getExtras();
         if (extras != null){
-            orders = (ArrayList<Order>) getIntent().getSerializableExtra("openOrdersList");
+            orders = (ArrayList<Order>) getIntent().getSerializableExtra("openOrders");
         }
 
 
