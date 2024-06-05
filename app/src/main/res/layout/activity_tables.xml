@@ -196,27 +196,26 @@
 
     <TextView
         android:id="@+id/totalTextView"
-        android:layout_width="127dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="142dp"
-        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="21dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/btable6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginBottom="12dp"
         android:text="Total income:"
         app:layout_constraintBottom_toTopOf="@+id/totalTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btable6"
+        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btable6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
