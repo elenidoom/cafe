@@ -24,8 +24,10 @@
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="28dp"
+        android:backgroundTint="#5ADDCD"
         android:onClick="MenuActivity"
         android:text="@string/table_1"
+        android:textColor="#14322E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_tables" />
@@ -35,41 +37,49 @@
         android:layout_width="110dp"
         android:layout_height="67dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="#49B1A4"
+        android:onClick="MenuActivity"
         android:text="@string/table_2"
+        android:textColor="#20504A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable1"
-        android:onClick="MenuActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/btable1" />
 
     <Button
         android:id="@+id/btable3"
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="#368379"
+        android:onClick="MenuActivity"
         android:text="@string/table_3"
+        android:textColor="#20504A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable2"
-        android:onClick="MenuActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/btable2" />
 
     <Button
         android:id="@+id/btable4"
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="#29635C"
+        android:onClick="MenuActivity"
         android:text="@string/table_4"
+        android:textColor="#49B1A4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable3"
-        android:onClick="MenuActivity"/>
+        app:layout_constraintTop_toBottomOf="@+id/btable3" />
 
     <Button
         android:id="@+id/btable5"
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="#20504A"
         android:onClick="MenuActivity"
         android:text="@string/table_5"
+        android:textColor="#49B1A4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btable4" />
@@ -80,8 +90,10 @@
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="7dp"
+        android:backgroundTint="#14322E"
         android:onClick="MenuActivity"
         android:text="@string/table_6"
+        android:textColor="#5ADDCD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -152,11 +164,13 @@
 
     <TextView
         android:id="@+id/textViewName"
-        android:layout_width="188dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="name"
+        android:text="@string/name"
+        android:textColor="#BDBDBD"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/title_tables"
         app:layout_constraintStart_toStartOf="parent"
@@ -170,8 +184,11 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="18dp"
-        android:text="Open Orders"
+
+        android:backgroundTint="#FFC107"
         android:onClick="openOrdersActivity"
+        android:text="@string/open_orders"
+        android:textColorLink="#8BC34A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
@@ -185,6 +202,7 @@
         android:layout_marginTop="108dp"
         android:layout_marginEnd="142dp"
         android:textSize="16sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btable6" />

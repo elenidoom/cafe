@@ -33,7 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private final String[] titles = {"coffee", "tea", "water", "cola", "fanta",
             "beer", "wine", "potatoes"};
-    private final String[] prices = {"2.5","2","0.5","2.2","2","3","4","4.5"};
+    private final String[] prices = {"2.5","2","0.5","2.5","2","3","4","4.5"};
 
     private final int[] images={R.drawable.rofimata1,R.drawable.rofimata2,R.drawable.rofimata3,R.drawable.rofimata4,R.drawable.rofimata5,R.drawable.rofimata6,R.drawable.rofimata7,R.drawable.rofimata8 };
 
@@ -51,7 +51,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
         Product product = new Product(titles[position],Double.parseDouble(prices[position]));
 
-        if(!productsList.containsKey(product)) {
+        if(!productsList.containsKey(product )) {
             productsList.put(product,0);
         }
 

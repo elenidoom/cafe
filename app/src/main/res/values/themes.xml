@@ -1,14 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme.-->
-    <style name="Base.Theme.CafePDA" parent="Theme.Material3.DayNight.NoActionBar">
-       <!--<item name="colorPrimary">#9C27B0</item>
-        <item name="colorPrimaryDark">#7B1FA2</item>
-        <item name="colorAccent">#00BCD4</item>
-        <item name="android:textStyle">bold</item>-->
+    <style name="CafePDAtheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#00796B</item>
+        <item name="colorAccent">#FFC107</item>
+        <item name="colorContainer">#B2DFDB</item>
+        <item name="android:textStyle">bold</item>
+
+
     </style>
 
 
-    <style name="Theme.CafePDA" parent="Base.Theme.CafePDA" />
+
 
 
 

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CafePDA"
+        android:theme="@style/CafePDAtheme"
         tools:targetApi="31">
         <activity
             android:name=".OpenOrdersActivity"
@@ -19,7 +19,7 @@
             android:name=".SignIn"
             android:exported="false" />
         <activity
-            android:name=".OrderAccount"
+            android:name=".Order"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"

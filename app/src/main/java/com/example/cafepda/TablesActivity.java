@@ -2,6 +2,7 @@ package com.example.cafepda;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -101,16 +102,22 @@ public class TablesActivity extends AppCompatActivity {
                 int id = o.getTableID();
                 if (id == 1) {
                     table1Status.setText("occupied");
+                    table1Status.setTextColor(Color.parseColor("#D32F2F"));
                 } else if (id == 2) {
                     table2Status.setText("occupied");
+                    table2Status.setTextColor(Color.parseColor("#D32F2F"));
                 } else if (id == 3) {
                     table3Status.setText("occupied");
+                    table3Status.setTextColor(Color.parseColor("#D32F2F"));
                 } else if (id == 4) {
                     table4Status.setText("occupied");
+                    table4Status.setTextColor(Color.parseColor("#D32F2F"));
                 } else if (id == 5) {
                     table5Status.setText("occupied");
+                    table5Status.setTextColor(Color.parseColor("#D32F2F"));
                 } else if (id == 6) {
                     table6Status.setText("occupied");
+                    table6Status.setTextColor(Color.parseColor("#D32F2F"));
                 }
 
             } else if (requestCode == 6) {
@@ -127,16 +134,22 @@ public class TablesActivity extends AppCompatActivity {
                 int id = orderToBeClosed.getTableID();
                 if (id == 1) {
                     table1Status.setText("empty");
+                    table1Status.setTextColor(Color.parseColor("#BDBDBD"));
                 } else if (id == 2) {
                     table2Status.setText("empty");
+                    table2Status.setTextColor(Color.parseColor("#BDBDBD"));
                 } else if (id == 3) {
                     table3Status.setText("empty");
+                    table3Status.setTextColor(Color.parseColor("#BDBDBD"));
                 } else if (id == 4) {
                     table4Status.setText("empty");
+                    table4Status.setTextColor(Color.parseColor("#BDBDBD"));
                 } else if (id == 5) {
                     table5Status.setText("empty");
+                    table5Status.setTextColor(Color.parseColor("#BDBDBD"));
                 } else if (id == 6) {
                     table6Status.setText("empty");
+                    table6Status.setTextColor(Color.parseColor("#BDBDBD"));
                 }
             }
         }
@@ -152,6 +165,12 @@ public class TablesActivity extends AppCompatActivity {
             intent.putExtra("openOrders", openOrders);
             startActivityForResult(intent,6);
         }
+
+    }
+
+    public void orders(View view){
+        Intent i = new Intent(this, Order.class);
+        startActivity(i);
 
     }
 
