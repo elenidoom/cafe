@@ -20,8 +20,11 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Activity το οποίο προβάλει τα τραπέζια , το αν είναι ανοιχτά ή κάθονται πελάτες
+ * και το συνολικό ποσό που έχει εισπραχθεί.
+ */
 public class TablesActivity extends AppCompatActivity {
-
     TextView objTextViewNameNewScreen;
     TextView table1Status;
     TextView table2Status;
@@ -51,15 +54,16 @@ public class TablesActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-            //Retrieve data passed in the Intent
+            //παίρνουμε το όνομα του σερβιτόρου.
             CharSequence userText = extras.getCharSequence("savedUserText");
             objTextViewNameNewScreen.setText(userText);
         }
-
     }
 
+    /**
+     * Μέθοδος όπου με βάση το ποιό τραπέζι επιλέχθηκε, ανοίγει με intenτ το MenuActivity.
+     */
     public void MenuActivity(View view){
-
         int id = view.getId();
         if (    (id == R.id.btable1 && table1Status.getText().equals("occupied")) ||
                 (id == R.id.btable2 && table2Status.getText().equals("occupied")) ||
@@ -67,8 +71,8 @@ public class TablesActivity extends AppCompatActivity {
                 (id == R.id.btable4 && table4Status.getText().equals("occupied")) ||
                 (id == R.id.btable5 && table5Status.getText().equals("occupied")) ||
                 (id == R.id.btable6 && table6Status.getText().equals("occupied"))  ){
-            Snackbar.make(view, "Table is occupied", Snackbar.LENGTH_LONG).show();
 
+            Snackbar.make(view, "Table is occupied", Snackbar.LENGTH_LONG).show();
         }
         else{
             Intent intent = new Intent(this, MenuActivity.class);
@@ -88,9 +92,29 @@ public class TablesActivity extends AppCompatActivity {
             }
             startActivityForResult(intent,5);
         }
-
-
     }
+
+    /**
+     * Μέθοδος που ανοίγει με intent το OpenOrdersActivity.
+     */
+    public void openOrdersActivity(View view){
+        if (openOrders.isEmpty()){
+            Snackbar.make(view,  "no open orders yet.", Snackbar.LENGTH_LONG).show();
+        }else{
+            Intent intent = new Intent(this, OpenOrdersActivity.class);
+            intent.putExtra("openOrders", openOrders);
+            startActivityForResult(intent,6);
+        }
+    }
+
+    /**
+     * Αυτή η μέθοδος διαχειρίζεται τα δεδομένα που επιστρέφουν τα intent.Συγκεκριμένα, εαν το requestCode
+     * είναι 5, σημαίνει ότι επιστρέψαμε απο το MenuActivity  ,λαμβάνουμε μια καινούρια παραγγελία  και τη προσθέτουμε
+     * στη λίστα openOrders.
+     * Αν το requestCode είναι 6, τότε σημάινει πως επιστρέαμε απο το OpenOrdersActivity, όπου λαμβάνουμε την παραγγελία
+     * που έχει πληρωθεί και έτσι προσθέτουμε το ποσό της παραγγελίας στο υπόλοιπο
+     * και αφαιρούμε τη παραγγελία απο τη λίστα openOrders.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -154,24 +178,4 @@ public class TablesActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-    public void openOrdersActivity(View view){
-        if (openOrders.isEmpty()){
-            Snackbar.make(view,  "no open orders yet.", Snackbar.LENGTH_LONG).show();
-        }else{
-            Intent intent = new Intent(this, OpenOrdersActivity.class);
-            intent.putExtra("openOrders", openOrders);
-            startActivityForResult(intent,6);
-        }
-
-    }
-
-    public void orders(View view){
-        Intent i = new Intent(this, Order.class);
-        startActivity(i);
-
-    }
-
 }

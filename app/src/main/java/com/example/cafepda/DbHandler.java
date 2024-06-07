@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Η κλάση αυτή διαχειρείζεται τη βάση δεδομένων της εφαρμογής.
+ * Η κλάση αυτή διαχειρείζεται τη βάση δεδομένων της εφαρμογής
+ * για την αποθήκευση των δεδομένων των σερβιτόρων.
  */
 public class DbHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;

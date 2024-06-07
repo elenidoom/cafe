@@ -1,8 +1,5 @@
 package com.example.cafepda;
 
-import static android.app.Activity.RESULT_OK;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +9,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * Το Adapter για το RecycleView που περιέχει τις ανοιχτές παραγγελίες.
+ */
 public class OpenOrdersAdapter extends RecyclerView.Adapter<OpenOrdersAdapter.ViewHolder>{
 
     private ArrayList<Order> openOrders;
     private int[] colors;
-    private final OpenOrdersAdapter.OnAddButtonClickListener listener;
-    public OpenOrdersAdapter(ArrayList<Order> openOrders, OnAddButtonClickListener listener) {
+    private final OnPayButtonClickListener listener;
+    public OpenOrdersAdapter(ArrayList<Order> openOrders, OnPayButtonClickListener listener) {
         this.openOrders = openOrders;
         this.listener = listener;
         this.colors=new int[]{
@@ -35,8 +34,11 @@ public class OpenOrdersAdapter extends RecyclerView.Adapter<OpenOrdersAdapter.Vi
         };
     }
 
-    public interface OnAddButtonClickListener {
-        void onAddButtonClicked(Order order);
+    /**
+     * Interface ια τη διαχείρηση του κουμπιού PAY.
+     */
+    public interface OnPayButtonClickListener {
+        void onPayButtonClicked(Order order);
     }
 
     @NonNull
@@ -52,10 +54,9 @@ public class OpenOrdersAdapter extends RecyclerView.Adapter<OpenOrdersAdapter.Vi
         holder.orderTextView.setText(openOrders.get(position).toString());
         Order order = openOrders.get(position);
         holder.payButton.setOnClickListener(v -> {
-            listener.onAddButtonClicked(order);
+            listener.onPayButtonClicked(order);
         });
         holder.cardlayout.setBackgroundColor(colors[position]);
-
     }
 
     @Override
@@ -65,7 +66,6 @@ public class OpenOrdersAdapter extends RecyclerView.Adapter<OpenOrdersAdapter.Vi
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         Button payButton;
-
         ConstraintLayout cardlayout;
         TextView orderTextView;
         public ViewHolder(@NonNull View itemView) {

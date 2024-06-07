@@ -12,6 +12,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
+/**
+ * Το συγκεκριμένο activity ανοίγει όταν ανοίγεις την εφαρμογή
+ * και έχεις την επιλογή να κάνεις sign in μέσω του κωδικού του σερβιτόρου,
+ * ή να δημιουργήσις ένα account.
+ */
 public class MainActivity extends AppCompatActivity {
     EditText objEditTextPassword;
     DbHandler db;
@@ -40,21 +45,27 @@ public class MainActivity extends AppCompatActivity {
             objEditTextPassword.setHint("PIN");
     }}
 
+    /**
+     * η μέθοδος που ανοίγει το activity "SignUp"
+     * για την δημιουργία ενός account
+     */
     public void SignIn(View view){
         Intent i = new Intent(this, SignIn.class);
         startActivity(i);
-
     }
 
+    /**
+     * η μέθοδος που ανοίγει το activity "Tables"
+     * μόνο εαν έχει βρεθεί ον κωδικός του σερβιτόρου στη βάση μας,
+     * αλλιώς εμφανίζεται ένα message.
+     */
     public void TablesActivity(View view){
         Intent i = new Intent(this, TablesActivity.class);
         String userText = String.valueOf(objEditTextPassword.getText());
 
-
         if (userText.isEmpty())
         {
-            Snackbar.make(view, "Please enter you Code name before starting your shift.", Snackbar.LENGTH_LONG)
-                    .show();
+            Snackbar.make(view, "Please enter your pin before starting your shift.", Snackbar.LENGTH_LONG).show();
         }
         else{
             String username = db.findWaiter(Integer.parseInt(userText));
@@ -66,17 +77,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         }
-
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         //Save data to the Bundle (other methods include putInt(), putBoolean() etc)
         CharSequence userText = objEditTextPassword.getText();
         outState.putCharSequence("savedUserText", userText);
-
-
     }
 }

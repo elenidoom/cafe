@@ -5,16 +5,16 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class OpenOrdersActivity extends AppCompatActivity implements OpenOrdersAdapter.OnAddButtonClickListener {
-
+/**
+ * Το συγκεκριμένο Activity  διαχειρίζεται τις ανοιχτές παραγγελίες που έχουμε
+ * και τις προβάλλει μέσω ενός RecyclerView.
+ */
+public class OpenOrdersActivity extends AppCompatActivity implements OpenOrdersAdapter.OnPayButtonClickListener {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter<OpenOrdersAdapter.ViewHolder> adapter;
@@ -38,8 +38,14 @@ public class OpenOrdersActivity extends AppCompatActivity implements OpenOrdersA
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * Μέθοδος που εκτελείται όταν
+     * πατηθεί το Pay Button του παραγγελίας, και επιστρέφει μέσω intent
+     * στο TablesActivity μαζί με τα δεδομένα.
+     * @param order η παραγγελία που θέλουμε να κλείσει.
+     */
     @Override
-    public void onAddButtonClicked(Order order) {
+    public void onPayButtonClicked(Order order) {
         Intent intent = new Intent();
         intent.putExtra("orderToBeClosed",order);
         setResult(RESULT_OK,intent);

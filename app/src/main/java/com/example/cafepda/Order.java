@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * Αυτή η κλάση αναπαριστά μια παραγγελία που αποτελείται απο
+ * ένα HashMap με τα αντικείμενα Product και τις ποσότητες τους,
+ * το σύνολο της παραγγελίας και το ID του πίνακα, δηλαδή απο ποιό τραπέζι
+ * έγινε η παραγγελία.
+ */
 public class Order implements Serializable {
-
     private double total;
     private HashMap<Product,Integer> products;
     private int tableID;
@@ -17,23 +22,19 @@ public class Order implements Serializable {
         products = new HashMap<>();
         total = 0;
     }
-    public Order(int tableID, HashMap<Product,Integer> products,double total) {
-        this.products = products;
-        this.tableID = tableID;
-        this.total = total;
-    }
-
-    public void setProducts(HashMap<Product, Integer> products) {
-        this.products = products;
-    }
 
     public void setTableID(int tableID) {
         this.tableID = tableID;
     }
+
+    /**
+     * Μέθοδος για την προσθήκη ενός προϊόντος στη παραγγελία.
+     * Εαν το προϊόν υπάρχει ήδη στη παραγγελία, αυξάνεται η ποσότητα,
+     * αλλώς προστίθεται στοHashMap με τη ποσότητά του.
+     */
     public void addProduct(Product product,int quantity){
         if(products.containsKey(product)) {
             products.put(product, products.get(product) + quantity);
-
         }
         else{
             products.put(product,quantity);
@@ -44,17 +45,12 @@ public class Order implements Serializable {
     public double getTotal() {
         return Math.round(total * 100.0) / 100.0;
     }
-
     public HashMap<Product, Integer> getProducts() {
         return products;
     }
 
     public int getTableID() {
         return tableID;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 
     @NonNull
