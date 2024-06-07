@@ -63,6 +63,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:text=""
         android:hint="@string/PIN"
         android:inputType="numberPassword"
         app:layout_constraintStart_toEndOf="@+id/textView5"

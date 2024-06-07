@@ -34,8 +34,8 @@
 
     <Button
         android:id="@+id/btable2"
-        android:layout_width="110dp"
-        android:layout_height="67dp"
+        android:layout_width="116dp"
+        android:layout_height="64dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="#49B1A4"
         android:onClick="MenuActivity"
