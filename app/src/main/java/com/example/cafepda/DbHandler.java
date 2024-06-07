@@ -70,4 +70,17 @@ public class DbHandler extends SQLiteOpenHelper {
         db.close();
         return name;
     }
+
+    /**
+     *Ελέγχει εαν το δοσμένο name υπάρχει στη βάση.
+     */
+    public boolean userNameExists(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT 1 FROM " + TABLE_WAITERS + " WHERE " + KEY_NAME + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{name});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        db.close();
+        return exists;
+    }
 }

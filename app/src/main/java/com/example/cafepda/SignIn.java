@@ -12,6 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.snackbar.Snackbar;
+
 /**
  * Activity για τη δημιουργία νέου σερβιτόρου και προσθήκη των στοιχείων του στη βάση.
  */
@@ -36,10 +38,16 @@ public class SignIn extends AppCompatActivity {
         db = new DbHandler(this,null,null,1);
         String name=objNameSignIn.getText().toString();
         String pass=objPasswordSignIn.getText().toString();
-        db.addWaiter(name,Integer.parseInt(pass));
-        objPasswordSignIn.setText("");
-        objNameSignIn.setText("");
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        if(db.userNameExists(name)){
+            Snackbar.make(view,  "Username exists, please choose another.", Snackbar.LENGTH_LONG).show();
+        }
+        else {
+            db.addWaiter(name,Integer.parseInt(pass));
+            objPasswordSignIn.setText("");
+            objNameSignIn.setText("");
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        }
+
     }
 }
