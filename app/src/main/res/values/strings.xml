@@ -25,5 +25,7 @@
     <string name="Dont_have_account">Do not have an account?</string>
     <string name="sign_in">Sign in!</string>
     <string name="password">Password:</string>
-    <string name="open_orders">Open Orders</string>
+    <string name="open_orders">Open\nOrders</string>
+    <string name="create_account">Create Account</string>
+    <string name="order">ORDER</string>
 </resources>

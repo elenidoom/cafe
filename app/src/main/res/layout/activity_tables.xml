@@ -10,11 +10,11 @@
 
     <TextView
         android:id="@+id/title_tables"
-        android:layout_width="85dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:text="@string/tables_title"
-        android:textSize="20sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,17 +89,14 @@
         android:layout_width="116dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="7dp"
         android:backgroundTint="#14322E"
         android:onClick="MenuActivity"
         android:text="@string/table_6"
         android:textColor="#5ADDCD"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btable5"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btable5" />
 
     <TextView
         android:id="@+id/textseated1"
@@ -179,19 +176,16 @@
 
     <Button
         android:id="@+id/openOrdersButton"
-        android:layout_width="105dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#FFC107"
         android:onClick="openOrdersActivity"
         android:text="@string/open_orders"
         android:textColorLink="#8BC34A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toEndOf="@+id/textViewName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
